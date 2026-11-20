@@ -1,8 +1,15 @@
-# 📋 Quiql CSS v1.0 — The "Golden Mean" CSS Methodology
+<div align="center">
+  <img src="./logo.svg" alt="Quiql Logo" width="84" height="84" />
+  <h1>Quiql CSS</h1>
+  <p><em>Quick eQuals Quality</em></p>
+  <p>
+    <a href="./LICENSE">
+      <img src="https://shields.io/badge/license-MIT-00cc66?style=flat-square" alt="License: MIT" />
+    </a>
+  </p>
+</div>
 
-**Quiql CSS** is an ultra-efficient architectural methodology designed for high-performance web development. It delivers exceptional results across the entire spectrum of engineering—from classic multi-page applications (HTML, PHP, Blade, CMS) to modern Single Page Applications (React, Vue, Svelte). Quiql preserves the strict encapsulation of BEM while adopting the brevity of Tailwind, radically reducing HTML/JS payload size, optimizing Virtual DOM parsing, and leveraging native CSS variables for reactive state management without losing semantics.
-
----
+**Quiql CSS** is an ultra-efficient architectural methodology designed for high-performance web development. It delivers exceptional results across the entire spectrum of engineering — from classic multi-page applications (HTML, PHP, Blade, CMS) to modern Single Page Applications (React, Vue, Svelte). Quiql preserves the strict encapsulation of **BEM** while adopting the brevity of **Tailwind**, radically reducing HTML/JS payload size, optimizing Virtual DOM parsing, and leveraging **native CSS variables** for reactive state management without losing semantics.
 
 ## 🎯 Why Quiql? (Problem — Solution)
 
@@ -17,7 +24,7 @@ Modern web development is trapped in two extremes:
 
 Modern web development suffers from a common misconception: *"HTML bloat doesn’t matter because Gzip/Brotli will compress it anyway."*
 
-While compression optimizes network transfer, it only deceives the wire—**it cannot deceive the user's browser, the device RAM, or the server's CPU.** Furthermore, their lifecycles differ fundamentally: CSS is cached **once**, while HTML is generated and downloaded from scratch **on every single page transition or refresh**.
+While compression optimizes network transfer, it only deceives the wire — **it cannot deceive the user's browser, the device RAM, or the server's CPU.** Furthermore, their lifecycles differ fundamentally: CSS is cached **once**, while HTML is generated and downloaded from scratch **on every single page transition or refresh**.
 
 #### 1. Client-Side Optimization: CPU vs. Network
 
@@ -26,7 +33,7 @@ When a browser receives compressed HTML, it executes a heavy execution chain:
 
 * **The Illusion:** A Tailwind-built page weighs **421 KB**, and network compression squeezes it to **~40–95 KB**. The network stage finishes quickly.
 * **The Runtime Reality:** Once inside the device, the CPU decompresses the file back to its full **421 KB** size in RAM.
-* **The Bottleneck:** Mobile processors cannot parse compressed strings. The CPU wastes clock cycles reading thousands of repetitive utility classes (e.g., `class="max-w-sm rounded-xl overflow-hidden..."`). This blocks the **Main Thread**, causing micro-stutters and directly degrading Google's Core Web Vitals—specifically the **INP** (*Interaction to Next Paint*) metric.
+* **The Bottleneck:** Mobile processors cannot parse compressed strings. The CPU wastes clock cycles reading thousands of repetitive utility classes (e.g., `class="max-w-sm rounded-xl overflow-hidden..."`). This blocks the **Main Thread**, causing micro-stutters and directly degrading Google's Core Web Vitals — specifically the **INP** (*Interaction to Next Paint*) metric.
 
 ##### Real-World Case Study: Tailwind vs. Quiql CSS
 Audit of a production e-commerce store page (`https://demo.laravelshopper.dev/store`) running 1,030 elements:
@@ -61,8 +68,6 @@ At **1,000,000 page views per day** on an uncompressed MPA architecture (Laravel
 
 **Summary:** `quiql-css` proves that the most sustainable code is efficient by design. Instead of spending datacenter and mobile hardware energy on redundant *compress-on-server → decompress-on-client* cycles, we simply eliminate the garbage before it hits the engine.
 
----
-
 ## 📊 Syntax Cheatsheet (Unique Architecture Tokens)
 
 Thanks to its strict token system, Quiql is 100% predictable for developers and effortlessly validated by automated linters.
@@ -71,17 +76,17 @@ Thanks to its strict token system, Quiql is 100% predictable for developers and 
 | :--- | :--- | :--- | :--- |
 | **Beacon** | `[beacon]_` (in CSS as a comment) | `ProductCard_` | Global `Ctrl+F` navigation locator |
 | **Alias** | `[alias]_` (ultra-short component name)| `prCd_` | Local module namespace isolation |
-| **Element** | `[alias]_[element]` | `prCd_title` | Flat component structure element |
+| **Element** | `[alias]_[element]` | `prCd_ttl` | Flat component structure element |
 | **Atom** | `[atom]-` (trailing hyphen) | `btn-`, `img-` | Global system-wide layout constructors |
 | **Modifier** | `-[modifier]` (leading hyphen) | `-promo`, `-bold`| Role-based style presets |
 | **State** | `_[state]` (leading underscore) | `_active`, `_opened` | Dynamic state flags toggled via JS |
 | **Responsive Utilities** | `-[utility]_-[breakpoint]`<br>`-[utility]_[breakpoint]`<br>`-[utility]_[breakpoint]-` | `-hid_-sm`<br>`-full_xl`<br>`-rev_md-` | Structural responsive behavior only |
 
-> ⚠️ **Strict Naming Constraint:** The **Beacon** is the *only* entity written in `PascalCase`. All other token sub-components, element names, modifiers, and state words **must strictly use `camelCase`** for multi-word separation. Underscores (`_`) and hyphens (`-`) are strictly reserved as system architectural delimiters and must never be used as text word spacers.
+> ⚠️ **Strict Naming Constraint:** The **Beacon** is the *only* entity written in `PascalCase`. All other token sub-components, atoms, element names, modifiers, and state words **must strictly use `camelCase`** for multi-word separation. Underscores (`_`) and hyphens (`-`) are strictly reserved as system architectural delimiters and must never be used as text word spacers.
 
 ### 📖 The Controlled Dictionary Rule
 
-To maximize HTML payload reduction and maintain a unified coding dialect across teams, you can use short aliases—but **strictly from the official Quiql Dictionary** to use the standard tokens listed below for common UI elements.
+To maximize HTML payload reduction and maintain a unified coding dialect across teams, you can use short aliases — but **strictly from the official Quiql Dictionary** listed below for common UI elements.
 
 If an element is not present in the official dictionary, its name must be written in full (e.g., `prCd_gallery` or `prCd_balance`). Inventing custom, non-standard abbreviations is forbidden to prevent code fragmentation and preserve immediate readability for new developers.
 
@@ -100,8 +105,6 @@ If an element is not present in the official dictionary, its name must be writte
 | Full-width | `full` | Reverse | `rev` |
 | Small (Mobile) | `sm` | Medium (Tablet) | `md` |
 | Large (Desktop)| `lg` | Extra Large | `xl` |
-
----
 
 ## 📜 The Quiql CSS Manifest (11 Core Rules)
 
@@ -154,12 +157,12 @@ Elements inside the component are created by appending a **Structure word** dire
 
 ### 4. Global Atoms (Atoms)
 System-level layout and UI primitives (`btn-`, `inp-`). The Atom provides the global base; the local element handles component-specific overrides (`class="prCd_btn btn-"`).
-*   **Atom Autonomy:** Global Atoms are strictly systemic, indivisible primitives. They do not possess child elements and never follow the Beacon aliasing algorithm.
+*   **Atom Autonomy:** Global Atoms are strictly system-level, indivisible primitives. They do not possess child elements and never follow the Beacon aliasing algorithm.
 
 ### 5. Modifiers, Presets & Component Pseudo-classes (Modifiers)
 Set during page rendering to represent a fixed alteration; must not change or disappear during the session. Use encapsulated role presets (`-promo`) instead of utility-first class bloating (`-red -bold -sizeLg`).
 * **Global vs. Local Modifiers:** Modifiers can be local (deeply encapsulated within a single module namespace) or global (system-wide tokens applied across multiple components, e.g., `-bold`, `-red`).
-* **The Antidote to Bloat:** Global modifiers must be used strictly as rare, systemic exceptions. Combining multiple global modifiers on a single tag to mimic utility-first frameworks is strongly discouraged. If an element requires more than two visual alterations, they must be refactored into a single local role preset.
+* **The Antidote to Bloat:** Global modifiers must be used strictly as rare, system-wide exceptions. Combining multiple global modifiers on a single tag to mimic utility-first frameworks is strongly discouraged. If an element requires more than two visual alterations, they must be refactored into a single local role preset.
 * **Chaining (No Cascade):** Individual modifiers must be defined separately. Chain selectors without spaces strictly to resolve modifier intersections. In CSS, these chains **must be written in alphabetical order**: `.prCd_btn.-promo.-sec`.
 * **Advanced Selectors (`:has`, `:is`, `:where`, `:not`):**
   * **Allowed:** Parent tracking using `:has()` on parent elements (e.g., `.prCd:has(._err)`); grouping modifiers or structural elements via `:is()` or `:where()` is permitted freely to keep code DRY.
@@ -287,7 +290,7 @@ When a trigger (hover, state, modifier) on a parent needs to alter its own desce
 
 #### 🟡 Part 3: Complex Intra-Module Connections (Weight > 0,3,0)
 When multiple modifiers and interactive pseudo-classes intersect on the exact same tag (e.g., `.prCd_.-promo._active:hover`, naturally yielding `0,4,0`), blowing past the architectural specificity cap.
-*   **The Rule:** Wrap the interactive pseudo-class inside the zero-specificity **`:where()` or `:is()`** blocks—this is the simplest and cleanest way to keep the selector weight at `0,3,0` while ensuring optimal browser rendering performance.
+*   **The Rule:** Wrap the interactive pseudo-class inside the zero-specificity **`:where()` or `:is()`** blocks — this is the simplest and cleanest way to keep the selector weight at `0,3,0` while ensuring optimal browser rendering performance.
 *   **Exception:** If the project requires **legacy browser support** where `:where()` is unavailable, bypass the selector entirely by shifting values via component-level **CSS variables**.
 
 ```css
@@ -326,7 +329,7 @@ When multiple modifiers and interactive pseudo-classes intersect on the exact sa
 ```
 
 #### 🗂️ Part 4: Native Cascade Exceptions (Legacy & Third-party)
-Direct structural cascading via spaces and native combinators is permitted **strictly** within these three isolated engineering scenarios:
+Direct structural cascading via spaces and native combinators is permitted **strictly** within these two isolated engineering scenarios:
 1.  **Third-party vendor libraries:** Modifying deep plugin layouts where Quiql classes are mixed with vendor selectors (e.g., `.prCd_sliderVirtual.swiper-virtual.swiper-css-mode .swiper-wrapper::after`). However, if you use `@layer`, you can avoid heavy cascading altogether. Simply wrap the third-party library inside a weak native layer via the `@import` function:
     ```css
     @layer qVendor;
@@ -405,7 +408,7 @@ Excluding initial base styles (Normalize, Reset, and native tag styling), all Qu
 To guarantee absolute predictability, instant visual scanning of the DOM tree, and clean JS DOM mutations, all architectural tokens within the HTML `class="..."` attribute must strictly follow the linear sequence from External Context to Runtime Dynamics:
 `[New Component Beacon & Alias] → [Parent Mix Element] → [Global Atom] → [Modifiers] → [Responsive Utilities] → [Dynamic States]`
 
-* **New Component Beacon & Alias:** Opens the module boundary if the tag serves as a root element (`Accordeon_ acn_`).
+* **New Component Beacon & Alias:** Opens the module boundary if the tag serves as a root element (`Accordion_ acn_`).
 * **Parent Mix Element:** Defines the node's position inside the parent container context (`prCd_faq`).
 * **Global Atom:** Declares the universal base anatomy of the element (`box-`).
 * **Modifiers:** Applies static design role presets (`-prm`).
@@ -414,7 +417,7 @@ To guarantee absolute predictability, instant visual scanning of the DOM tree, a
 
 *Correct HTML Syntax Order:*
 ```html
-<div class="Accordeon_ acn_ prCd_faq box- -prm -hid_-sm _active"></div>
+<div class="Accordion_ acn_ prCd_faq box- -prm -hid_-sm _active"></div>
 ```
 
 #### 🗂️ Part 2: The Official CSS Layer Sequence (Top to Bottom)
@@ -439,7 +442,7 @@ To guarantee absolute predictability, instant visual scanning of the DOM tree, a
    * AI-Ready Production Beacon as a comment (`/*! ProductCard_ */`).
    * Base Components & Child Elements (`.prCd_`, `.prCd_ttl`).
    * Component Pseudo-elements (`.prCd_ttl::before`, `.prCd_ttl::after`).
-   * Component + Modifier intersections (`.prCd_ttl.-heroText`).
+   * Component + Modifier intersections (`.prCd_ttl.-heroTxt`).
    * Element Pseudo-classes / Hovers (`.prCd_ttl:hover`).
    * Component + Runtime State intersections (`.prCd_btn._active`).
    * Component + Modifier + State combined chains (`.prCd_btn.-prm._active`).
@@ -453,8 +456,6 @@ Inside the Global Utility Layer, media queries must follow a strict three-stage 
 2. **Interval Vectors (`min-width` and `max-width`):** Sorted sequentially from smallest to largest tier. Since these ranges are mathematically isolated by the `0.02px` rule, they do not overlap.
 3. **Right Vectors (`min-width`):** Sorted from smallest to largest breakpoint, powering the core Mobile First engine by allowing larger display rules to naturally override mobile defaults.
 
----
-
 ## 🚀 Production Example (Full Stack Showcase)
 
 To achieve maximum HTML weight reduction, this example heavily utilizes tokens from the **Quiql Controlled Dictionary** (`ttl`, `desc`, `btn`).
@@ -462,11 +463,12 @@ To achieve maximum HTML weight reduction, this example heavily utilizes tokens f
 ### 📄 HTML Layout
 ```html
 <div class="ShopGrid_ shGd_">
-  <!-- 1. Layout Mix: 'shGd_itm' positions the card. The card's root ('prCd_') margin is strictly 0 -->
+  <!-- 1. Layout Mix: shGd_itm positions the card. The card's root (prCd_) margin is strictly 0 -->
+
   <article class="ProductCard_ prCd_ shGd_itm">
     
     <!-- 2. Flat Element + Role Preset Modifier -->
-    <h2 class="prCd_ttl -heroText">Quiql Phone X</h2>
+    <h2 class="prCd_ttl -heroTxt">Quiql Phone X</h2>
     
     <!-- 3. Structural Responsive Suffix (Element hides strictly on mobile screens) -->
     <p class="prCd_desc -hid_-sm">Eco-friendly digital layout engineering.</p>
@@ -509,8 +511,7 @@ To achieve maximum HTML weight reduction, this example heavily utilizes tokens f
   color: #333;
 }
 
-/* Modifier Chaining (Enforcing alphabetical order for linter predictability) */
-.prCd_ttl.-heroText {
+.prCd_ttl.-heroTxt {
   font-size: 2.5rem;
   font-weight: 800;
   color: #ff0055;
@@ -548,8 +549,6 @@ button.addEventListener('click', () => {
 💡 **Why is this highly readable?**
 Even though the classes are extremely short, the global **Beacon** (`ProductCard_`) explicitly declares the context at the very root of the component. Inside this component, any developer instantly understands that `prCd_ttl` means *Product Card Title*, and `prCd_desc` means *Product Card Description*, eliminating any cognitive load while keeping the runtime HTML payload incredibly lightweight.
 
----
-
 ## 🔮 Future Ecosystem: SPA Toolchain Roadmap (Vite / PostCSS)
 
 To completely eliminate manual routine and provide an elite Developer Experience (DX) in modern component-driven frameworks (React, Vue, Svelte), the upcoming Quiql CSS toolchain will introduce automated compilation and transformation layers:
@@ -569,20 +568,18 @@ To completely eliminate manual routine and provide an elite Developer Experience
 * **Hardcore Performance Optimization**
   An extreme compression tier where production element classes shrink down to single-letter tokens. To preserve absolute maintainability, a lightweight client-side script will dynamically expose full semantic names into a temporary debugging layer inside the browser DevTools inspector on demand, leaving production HTML unbloated.
 
----
-
 ## 💬 Frequently Asked Questions & Criticism (FAQ)
 
 ### 🧠 Readability & Developer Experience (DX)
 
 #### ❓ Won't the code turn into an unreadable "bird language" due to all the abbreviations?
-**Answer:** No. The algorithm compresses strictly the **Beacon**—the name of the component itself (`ProductCard_` $\to$ `prCd_`). Since the Beacon is always declared in the HTML directly on the root tag right next to its alias, the context is immediately obvious. Internal elements are either compressed strictly according to the RECOMMENDED dictionary (`ttl`, `btn`, `img`) or written out in full (`prCd_description`). Custom, rogue abbreviations are completely forbidden.
+**Answer:** No. The algorithm compresses strictly the **Beacon** — the name of the component itself (`ProductCard_` → `prCd_`). Since the Beacon is always declared in the HTML directly on the root tag right next to its alias, the context is immediately obvious. Internal elements are either shortened using **optional tokens from the Controlled Dictionary** (`ttl`, `btn`, `img`) or written out in full (`prCd_description`). Custom, rogue abbreviations are completely forbidden.
 
 #### ❓ Why should I learn Quiql rules in the era of Scoped CSS and CSS Modules?
 **Answer:** Tools like Scoped CSS prevent style leakage to the outside, but they do absolutely **nothing to organize the code inside the component**, allowing pure chaos in selectors. Furthermore, they fail at contextual intersections, forcing developers to rely on hacky workarounds like `::v-deep`. Quiql CSS provides strict structure inside the module, completely eliminates deep cascading, and doesn't bloat the HTML with unique dynamic hashes.
 
 #### ❓ How do new developers adapt to such a strict discipline?
-**Answer:** Faster than in Tailwind or BEM, thanks to the complete elimination of variance. In Tailwind, a single button can be styled using 50 different combinations of utility classes; in BEM, it can be done via a dozen different cascades. In Quiql CSS, there is always only one correct path—it is rigidly dictated by the alias generation rules and the element dictionary. Code review becomes binary and takes seconds.
+**Answer:** Faster than in Tailwind or BEM, thanks to the complete elimination of variance. In Tailwind, a single button can be styled using 50 different combinations of utility classes; in BEM, it can be done via a dozen different cascades. In Quiql CSS, there is always only one correct path — it is rigidly dictated by the alias generation rules and the element dictionary. Code review becomes binary and takes seconds.
 
 ### 🏗️ Architecture & Maintainability
 
@@ -600,4 +597,4 @@ To completely eliminate manual routine and provide an elite Developer Experience
 
 ---
 
-🧬 **Quiql Ecosystem 2026** | Develop web with purpose.
+🧬 **Quiql Ecosystem 2026** — *Quick eQuals Quality*
